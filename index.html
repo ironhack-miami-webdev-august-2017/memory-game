@@ -24,6 +24,15 @@
             </h1>
           </div>
 
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control pair-input" placeholder="Number of pairs...">
+            </div>
+            <button type="button" class="btn btn-primary restart-button">
+              Restart
+            </button>
+          </form>
+
           <ul class="nav navbar-nav navbar-right score-ui">
             <li class="score">
               Score
@@ -45,6 +54,26 @@
     </section>
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+              You Won!
+            </h4>
+          </div>
+
+          <div class="modal-body">
+            <img src="https://media.giphy.com/media/CBOFQfzFKKiha/giphy.gif">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- jQuery's JavaScript (put it before Bootstrap) -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -53,6 +82,9 @@
 
     <!-- Boostrap's JavaScript (put it before yours but after jQuery) -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Load ion.sound for sound playback -->
+    <script src="./ion.sound-3.0.7/ion.sound.min.js"></script>
 
     <!-- Your JavaScripts (put them after jQuery & Bootstrap) -->
     <script src="./js/memory.js"></script>

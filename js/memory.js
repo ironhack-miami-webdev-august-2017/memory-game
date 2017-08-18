@@ -5,6 +5,9 @@ function MemoryGame () {
     // how many pairs you've flipped over (both wrong ones and correct ones)
     this.attempts = 0;
 
+    // the score you need to win
+    this.winningScore = 0;
+
     // let's us know if this is the first click or second click in a reveal
     this.firstClickedTile = null;
 
@@ -39,12 +42,17 @@ function MemoryGame () {
 } // close function MemoryGame() {
 
 
-MemoryGame.prototype.newTiles = function () {
+MemoryGame.prototype.newTiles = function (tileAmount) {
+    tileAmount = Number(tileAmount);
+
     // randomize availableTiles
     shuffle(this.availableTiles);
 
     // grab the first 10 random images
-    var randomImages = this.availableTiles.slice(0, 10);
+    var randomImages = this.availableTiles.slice(0, tileAmount);
+
+    // set the new winning score
+    this.winningScore = randomImages.length;
 
     // make "currentTiles" a new mega array with each image appearing twice
     this.currentTiles = randomImages.concat(randomImages);
@@ -72,6 +80,15 @@ MemoryGame.prototype.newTiles = function () {
 
         $('.mega-tile-row').append(tileDom);
     });
+
+
+    // reset all variables
+    this.score = 0;
+    this.attempts = 0;
+    this.firstClickedTile = null;
+
+    $('.score span').html(this.score);
+    $('.attempts span').html(this.attempts);
 }; // close MemoryGame.prototype.newTiles
 
 
@@ -87,6 +104,15 @@ MemoryGame.prototype.checkFlip = function (tileUrl) {
             this.score += 1;
 
             $('.score span').html(this.score);
+
+            // play a sound for feedback
+            ion.sound.play("beer_can_opening");
+
+            // show the winning modal if our score is high enough
+            if (this.winningScore === this.score) {
+                $('#myModal').modal('show');
+                ion.sound.play("bell_ring");
+            }
         }
         else {
             // turn the cards face down after 2 seconds
