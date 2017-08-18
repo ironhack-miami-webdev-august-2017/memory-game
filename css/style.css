@@ -45,8 +45,13 @@ h1.navbar-brand {
   border: 5px solid white;
   border-radius: 3px;
 }
-.tile.flipped .actual-flip {
+.tile.flipped .actual-flip,
+.tile.correct .actual-flip {
   transform: rotateY(180deg);
+}
+
+.tile.correct .actual-flip {
+  box-shadow: 0 0 40px 15px #F96D00;
 }
 
 .tile-front,
