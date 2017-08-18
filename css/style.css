@@ -1,0 +1,78 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-image: linear-gradient(to right, #B066FE, #63E2FF);
+}
+
+h1.navbar-brand {
+  font-family: 'Courgette', cursive;
+  font-size: 45px;
+}
+
+
+.score-ui {
+  height: 82px;
+  font-size: 25px;
+  margin-right: 25px;
+  padding: 18px 0;
+}
+
+.score-ui li {
+  margin-left: 30px;
+}
+
+
+.tile {
+  perspective: 1000px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+.tile,
+.actual-flip,
+.tile-front,
+.tile-back {
+  height: 150px;
+}
+
+.actual-flip {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  border: 5px solid white;
+  border-radius: 3px;
+}
+.tile.flipped .actual-flip {
+  transform: rotateY(180deg);
+}
+
+.tile-front,
+.tile-back {
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tile-back {
+  z-index: 2;
+  width: 100%;
+  background-color: white;
+  font-size: 50px;
+  text-align: center;
+  line-height: 150px;
+}
+
+.tile-front {
+  /* turn the tile's front over so it starts facing backwards */
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+.tile-front img {
+  width: 100%;
+}
